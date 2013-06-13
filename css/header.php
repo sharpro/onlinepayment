@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Add member</title>
@@ -27,7 +27,7 @@
   <header>
     <nav>	
 		<div id="logo" ><a href="#"><img src="images/logo.png" alt="Logo here" /></a>  </div></td>
-		<div class = "nav_button"><a href="mainaccess.php"><i>返回</i></a>&nbsp&nbsp<a href="index.php"><i>登出</i></a></div>
+		<div class = "nav_button"><a href="mainaccess.php"><i>Back</i></a>&nbsp&nbsp<a href="index.php"><i>sign out</i></a></div>
     </nav>
 </header>
  </body>

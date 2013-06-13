@@ -24,7 +24,7 @@
 //global $user; 
 	$conn=mysql_connect("localhost", "root", "");//connect to mysql 
 	  mysql_select_db("wepay");//choose database
-	$sql = "SELECT * FROM `user_info` WHERE `type` =  'blacklist user'";
+	$sql = "SELECT * FROM `user_info` WHERE `type` =  '0'";
 	$query = mysql_query($sql, $conn);
 	$num=mysql_num_rows($query);//get the number of correct records
 	$cnt = 0;

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <title>online payment system</title>
@@ -8,7 +8,7 @@
 			top:20px;
 			width:1000px;
 			height:100px;
-			background:url(images/inputpanel2.png);
+
 			cellpadding:3px;
 		}
 		.mainprint{
@@ -16,7 +16,6 @@
 			top:20px;
 			width:1000px;
 			height:100px;
-			background:url(images/inputpanel2.png);
 			cellpadding:3px;
 		}
 		.mainprint2{
@@ -24,7 +23,6 @@
 			top:20px;
 			width:1000px;
 			height:100px;
-			background:url(images/inputpanel2.png);
 			cellpadding:3px;
 			font-size:20px;
 		}
@@ -33,7 +31,6 @@
 			top:20px;
 			width:1000px;
 			height:1400px;
-			background:url(images/inputpanel3.png);
 			cellpadding:3px;
 			font-size:20px;
 		}
@@ -42,14 +39,15 @@
 			top:20px;
 			width:1000px;
 			height:400px;
-			background:url(images/inputpanel3.png);
 			cellpadding:3px;
 			font-size:20px;
 		}
 	</style>
 	<meta charset="utf-8" >
 		    <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet" media="screen">	  
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+    <script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/bootstrap.js" type="text/javascript"></script>
 
  </head>
  <body>
@@ -64,86 +62,110 @@
 				</tr>
 				<tr>
 				<td style="width:400px;text-align:right;padding:3px;">
-					<label><b>Please select a type<b></label>
+					<label><b>选择类型<b></label>
 				</td>
-				<td style="width:400px;text-align:left;padding:3px;">
-					<label class = "checkbox inline">
-						<input type = "radio" name = "typevalue"  value = "1" /><b>user</b>
-						<input type = "radio" name = "typevalue" value = "2" /><b>administrator</b>
-					</label>	
+				<td style="width:150px;text-align:left;padding:3px;">
+					<select name = "typevalue">
+					    <option></option>
+                        <option value = "1">用户</option>
+                        <option value = "2">管理员</option>
+                        
+                    </select>
 				</td>
-				</tr>
-				<tr>
-					<td>
+				<td style="width:200px;text-align:left;padding:3px;">
+						<input type="submit" class = "btn-success" name="button" id="button" value="OK" />
 					</td>
-					<td>
-						<input type="submit" name="button" id="button" value="OK" />
-					</td>
-				</tr>
-				<tr>
 				</tr>
 			<table>
 		</form>
 	</div>
 </fieldset>
+<script LANGUAGE="javascript"> 
+<!-- 
+function openwin(id) { 
+
+window.open ("modifyad.php?id="+id, "newwindow", "height=300, ScreenX= 400 , ScreenY = 200,width=650, toolbar=no,menubar=no, scrollbars=no, resizable=no, location=no, status=no") 
+//写成一行 
+} 
+function openwin2(id) { 
+
+window.open ("modifyuser.php?id="+id, "newwindow", "height=300, ScreenX= 400 , ScreenY = 200,width=650, toolbar=no,menubar=no, scrollbars=no, resizable=no, location=no, status=no") 
+//写成一行 
+} 
+//--> 
+</script> 
+
 <?php
 //global $user; 
-if($_POST){
+if($_POST || $_GET){
+    if($_POST)
 	$type = $_POST['typevalue'];
+    elseif($_GET){
+	$type = $_GET['type'];
+	}
+	$table = 'user_info';
 
-	if($type == 1){
-		$table = 'user_info';
-	}
-	else{
-		$table = 'admin_id';
-	}
-	if (empty($table)){
+	if (empty($type)){
 		echo "<script>\r\n";   
-		echo " alert(\"no empty textfield is allowed \");\r\n";   
-		echo " location.replace(\"http://127.0.0.1/onlinepayment/checkinfo.php\")\r\n";   
+		echo " alert(\"请选择类型\");\r\n";   
 		echo "</script>";   
 		exit;
 	}
 	else {
 		$conn=mysql_connect("localhost", "root", "");//connect to mysql 
 		  mysql_select_db("wepay");//choose database
-		$sql = "SELECT * FROM `$table`";
+        if($type == 1)
+		{
+		    $sql = "SELECT * FROM `$table` where manager = '0'";
+		}
+		elseif($type == 2)
+		{
+		    $sql = "SELECT * FROM `$table` where manager = '1' OR manager = '2'";
+		}
 		$query = mysql_query($sql, $conn);
 		$num=mysql_num_rows($query);//get the number of correct records
 		$cnt = 0;
 		$row = mysql_fetch_array($query);
-		if($type == 1){
-				echo "<p>User</p>";
-				echo "<table  border='1' class = 'mainprint'>
-						<tr>
-							<td>id</td>
-							<td>username</td>
-							<td>name</td>
-							<td>password</td>
-							<td>spassword</td>
-							<td>account</td>
-							<td>manager</td>
-							<td>id_card</td>
-							<td>email</td>
-							<td>phone</td>
-							<td>birthday</td>
-							<td>gender</td>
-							<td>exp</td>
-							<td>type</td>
-						</tr>";
+		
+		echo "<form  name = 'input',method ='post', action = 'ctl/deleteuser.php'>
+		<table  class = 'table table-hover';>
+			<tr>";
+	    if($type == 1)
+        {echo"		<td>id</td>
+				<td>用户名</td>
+				<td>姓名</td>
+				<td>密码</td>
+				<td>支付密码</td>
+				<td>账户余额</td>
+				<td>是否为管理员</td>
+				<td>身份证</td>
+				<td>email</td>
+				<td>电话</td>
+				<td>生日</td>
+				<td>性别</td>
+				<td>exp</td>
+				<td>类型</td>
+			</tr>";
 		}
 		else{
-				echo "<p>administrator</p>";
-				echo "<table border='1' class = 'mainprint'>
-						<tr>
-							<td>id</td>
-							<td>username</td>
-							<td>name</td>
-							<td>password</td>
-						</tr>";
+		echo"
+		<td>id</td>
+				<td>用户名</td>
+				<td>姓名</td>
+				<td>密码</td>
+				<td>管理员类型</td>
+				<td>身份证</td>
+				<td>email</td>
+				<td>电话</td>
+				<td>生日</td>
+				<td>性别</td></tr>";
+
 		}
+		
 		while ($num > $cnt){ //may be same name or password
 			if($type == 1){  //for user
+			    $id = $row["id"];
+				
 				echo "<tr>";
 				echo "<td>".$row['id']."</td>";
 				echo "<td>".$row['username']."</td>";
@@ -151,70 +173,74 @@ if($_POST){
 				echo "<td>".$row['password']."</td>";
 				echo "<td>".$row['spassword']."</td>";
 				echo "<td>".$row['account']."</td>";
-				echo "<td>".$row['manager']."</td>";
+				echo "<td>用户</td>";
 				echo "<td>".$row['id_card']."</td>";
 				echo "<td>".$row['email']."</td>";
 				echo "<td>".$row['phone']."</td>";
 				echo "<td>".$row['birthday']."</td>";
-				echo "<td>".$row['gender']."</td>";
+				if($row['gender'] == 'm')
+				{
+				    echo "<td>男</td>";
+				}
+				elseif($row['gender'] == 'f')
+                { 
+				    echo "<td>女</td>";
+                }				
+				else
+				{
+				    echo "<td>".$row['gender']."</td>";				
+				}	
 				echo "<td>".$row['exp']."</td>";
 				echo "<td>".$row['type']."</td>";
+				echo "<td><button class = 'btn-danger' type='submit' name = 'id' 
+				value = '".$id."'  formaction = 'ctl/deleteuser.php'>删除</button></td>";
+				echo "<td><button class = 'btn-primary' type='button' onclick = 'openwin2(".$id.")'>编辑</button></td>";
 				echo "</tr>";
 					
 			}
-			else{				//for administrator
+			elseif($type == 2){				//for administrator
 				echo "<tr>";
+				$id = $row['id'];
 				echo "<td>".$row['id']."</td>";
 				echo "<td>".$row['username']."</td>";
 				echo "<td>".$row['name']."</td>";
 				echo "<td>".$row['password']."</td>";
-				echo "</tr>";
+				if($row['manager'] == 1){
+				    echo "<td>系统管理员</td>";
+				}
+				else{
+				    echo "<td>在线支付管理员</td>";
+				}
+				echo "<td>".$row['id_card']."</td>";
+				echo "<td>".$row['email']."</td>";
+				echo "<td>".$row['phone']."</td>";
+				echo "<td>".$row['birthday']."</td>";
+				if($row['gender'] == 'm')
+				{
+				    echo "<td>男</td>";
+				}
+				elseif($row['gender'] == 'f')
+                { 
+				    echo "<td>女</td>";
+                }				
+				else
+				{
+				    echo "<td>".$row['gender']."</td>";				
+				}	
+				echo "<td><button class = 'btn-danger' type='submit' name = 'id' 
+				value = '".$id."'  formaction = 'ctl/deleteuser.php'>删除</button></td>";
+				echo "<td><button class = 'btn-primary' type='button' onclick = 'openwin(".$id.")'>编辑</button></td>";
+				
+				
+		    echo "</tr>";   
 			}
 			$cnt++;
 			$row = mysql_fetch_array($query);
 		}
-		echo "</table>";
-		
-		//delete the information
-		if($type == 1){
-			echo "<form method ='post', action = 'ctl/deleteuser.php'>
-				    <table class = 'mainprint2'>
-					<tr>
-						<td align ='right'>
-							Fill the id to delete
-						</td>
-						<td>
-						</td>
-					</tr>
-					<tr>
-						<td><input type = 'test' name = 'id' /></td>
-						<td><input type='submit' name='button' id='button' value='OK' /></td>
-					</tr>
-					<table>
-				</form>";
-		}
-		else{
-			echo "<form method ='post', action = 'ctl/deleteadmin.php'>
-				    <table class = 'mainprint2'>
-					<tr>
-						<td>
-							Fill the username to delete
-						</td>
-						<td>
-						</td>
-					</tr>
-					<tr>
-						<td align = 'right'><input type = 'test' name = 'username' />
-						<input type='submit' name='button' id='button' value='OK' />
-						</td>
-					</tr>
-					<table>
-				</form>";			
-		}
-		echo "<p>Update</P>";
+		echo "</table></form>";
 		
 		//update the information
-		if($type == 1){
+     /*	if($type == 1){
 			echo "<form method = 'post' action = 'ctl/updateuser.php'>
 					<table class ='mainprint3'>
 
@@ -320,7 +346,7 @@ if($_POST){
 						</tr>
 					</table>					
 				</form>";
-		}
+		}*/
 	}
 }
 ?>

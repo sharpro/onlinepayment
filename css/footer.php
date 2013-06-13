@@ -13,14 +13,14 @@
 <footer>  
   <div id="footer">
     <details>
-	<summary>
-	<p>
-	     Powered By Group B, Software Engineering
-	 </p>
-	<p>
-		Powered By Bootstrap</p>
-	
-	 </summary>
+		<summary>
+		<p>
+			E-mail:<a href="mailto:op_feedback@163.com">op_feedback@163.com</a>
+		 </p>
+		<p>
+			Copyright &copy; B5 -2013.</p>
+		
+		 </summary>
 	</details>
     </div>
 </footer>

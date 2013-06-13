@@ -20,7 +20,7 @@ $id = $_POST['id'];
 	}
 	else{
 		if(!empty($id)){
-			$sql1 = "UPDATE `wepay`.`user_info` SET `type` = 'blacklist user' WHERE `user_info`.`id` = '$id'";
+			$sql1 = "UPDATE `wepay`.`user_info` SET `type` = '0' WHERE `user_info`.`id` = '$id'";
 			$query1 = mysql_query($sql1, $conn);
 			if($query1 == FALSE){
 				echo "<script>\r\n";   

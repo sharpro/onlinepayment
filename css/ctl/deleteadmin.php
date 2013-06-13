@@ -23,7 +23,7 @@ else {
 	if($query){
 		echo "<script>\r\n";   
 		echo " alert(\"delete succed \");\r\n";   
-		echo "  location.replace(\"http://127.0.0.1/onlinepayment/maintenance.php?type=2\")\r\n";   
+		echo "  location.replace(\"http://127.0.0.1/onlinepayment/maintenance.php\")\r\n";   
 		echo "</script>";   
 		exit;
 	}

@@ -25,7 +25,7 @@
 <header>
     <nav>   
       <div id="logo"><a href="#"><img src="images/logo.png" alt="Logo here" /></a>  </div>
-	  <div class = "logout"><a href="index.php"><i>登出</i></a></div>
+	  <div class = "logout"><a href="index.php"><i>sign out</i></a></div>
     </nav>
 </header>
 
@@ -36,35 +36,35 @@
                         <a href="add_adm.php">
                             <span class="ca-icon">A</span>
                             <div class="ca-content">
-                                <h2 class="ca-main">增加管理员</h2>
-                                <h3 class="ca-sub">增加新的管理员</h3>
+                                <h2 class="ca-main">Add Administrator</h2>
+                                <h3 class="ca-sub">add a new admin member</h3>
                             </div>
                         </a>                    
 					</li>
                     <li>
                         <a href="checkinfo.php">
-                            <span class="ca-icon">B</span>
+                            <span class="ca-icon">C</span>
                             <div class="ca-content">
-                                <h2 class="ca-main">核实信息</h2>
-                                <h3 class="ca-sub">核实用户信息</h3>
+                                <h2 class="ca-main">Check Information</h2>
+                                <h3 class="ca-sub">check members' information</h3>
                             </div>
                         </a>                    
 					</li>
                     <li>
                         <a href="maintenance.php">
-                            <span class="ca-icon">C</span>
+                            <span class="ca-icon">M</span>
                             <div class="ca-content">
-                                <h2 class="ca-main">维护信息</h2>
-                                <h3 class="ca-sub">维护用户信息</h3>
+                                <h2 class="ca-main">Maintenance Information</h2>
+                                <h3 class="ca-sub">maintenance members' information</h3>
                             </div>
                         </a>                    
 					</li>
                     <li>
                         <a href="blacklist.php">
-                            <span class="ca-icon">D</span>
+                            <span class="ca-icon">L</span>
                             <div class="ca-content">
-                                <h2 class="ca-main">黑名单和仲裁</h2>
-                                <h3 class="ca-sub">管理黑名单和仲裁</h3>
+                                <h2 class="ca-main">Blacklist and Arbitration</h2>
+                                <h3 class="ca-sub">look up blacklist and arbitration</h3>
                             </div>
                         </a>                    
 					</li>
@@ -75,10 +75,10 @@
     <details>
 	<summary>
 	<p>
-	     Powered By Group B, Software Engineering
+		E-mail:<a href="mailto:op_feedback@163.com">op_feedback@163.com</a>
 	 </p>
 	<p>
-		Powered By Bootstrap</p>
+		Copyright &copy; B5 -2013.</p>
 	
 	 </summary>
 	</details>

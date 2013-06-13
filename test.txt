@@ -1,0 +1,70 @@
+<form class="form-horizontal" method = "post">
+	<table> 
+	        
+			<tr>
+				<td><label class="control-label" for "inputid"><b>* 身份证</b></label>
+				</td>
+				<td>
+					<input name = "id_card" id = "inputid" type = "test" placeholder=id>
+				</td>
+				<td><label class="control-label" for "inputemail"><b>e-mail</b></label>
+				</td>
+				<td>
+					<input name = "email" id = "inputemail" type = "test" placeholder="输入e-mail">
+				</td>
+			</tr>
+			<tr>
+				<td><label class="control-label" for "inputname"><b>* 姓名</b></label>
+				</td>
+				<td>
+					<input name = "name" id = "inputname" type = "test" placeholder="输入姓名">
+				</td>
+				<td><label class="control-label" for "inputphone"><b>电话</b></label>
+				</td>
+				<td>
+					<input name = "phone" id = "inputphone" type = "test" placeholder="输入电话">
+				</td>
+			</tr>
+			<tr>
+				
+				<td><label class="control-label" for "inputid"><b>生日</b></label>
+				</td>
+				<td>
+					<input name = "birthday" id = "inputbirthday" type = "test" placeholder="输入生日">
+				</td>
+				<td><label class = "control-label" for "inputmanager"><b>是否为管理员</b></label>
+				</td>
+				<td>
+					<select name = "manager">
+					<option value = "1">系统管理员</option>
+					<option value = "2">在线支付管理员</option>
+					</select>
+					
+				</td>
+			</tr>
+			<tr>
+				<td><label class="control-label" for "password"><b>* 密码</b></label></td>
+				<td>
+					<input name = "password" id = "password" type = "password" placeholder="输入密码">
+				</td>
+				<td><label class="control-label" for "inputgender"><b>性别</b></label>
+				</td>
+				<td>
+					<select name = "gender">
+					<option value = "m">男</option>
+					<option value = "f">女</option>
+					</select>
+					
+				</td>
+			</tr>
+			<tr>
+			    <td>
+				</td>
+				<td>
+				    <input  type="submit" class = "btn-info" name="button" id="button" value="提交" />
+				</td>
+			</tr>
+			
+		</table>
+		
+	</form>

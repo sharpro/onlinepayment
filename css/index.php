@@ -16,15 +16,10 @@
 	td{
 		padding:3px;
 	}
-	.error
-	{
-		color:red;
-		position:relative;left:180px;
-	}
 </style>
  </head>
  <body>
-<header>
+ <header>
     <nav>   
 	  <div id="logo"><a href="#"><img src="images/logo.png" alt="Logo here" /></a></div>  
     </nav>
@@ -33,7 +28,6 @@
 	<div style="position:relative;left:420px;">
 		<form class="form-horizontal" method = "post" action = "ctl/login.php">
 		  <table>
-			<div class = "error">username or password error !</div>
 			<tr>
 				<td>
 					<label class="control-label" for "inputusername"><b>Username</b></label>
@@ -60,7 +54,7 @@
 		</form>
 	</div>
 <footer>  
- <div id="footer">
+  <div id="footer">
     <details>
 	<summary>
 	<p>
@@ -71,7 +65,7 @@
 	
 	 </summary>
 	</details>
- </div>
+    </div>
 </footer>
 
 </body>

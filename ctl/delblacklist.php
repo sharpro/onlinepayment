@@ -8,7 +8,7 @@
 $id = $_POST['id'];
 	$conn=mysql_connect("localhost", "root", "");//connect to mysql 
 	mysql_select_db("wepay");//choose database
-	$sql = "SELECT * FROM `user_info` WHERE `id` = '$id' AND `type` = '0'";
+	$sql = "SELECT * FROM `user_info` WHERE `id` = '$id' AND `type` = 'blacklist user'";
 	$query = mysql_query($sql, $conn);
 	$num = mysql_num_rows($query);
 	if ($num == 0){
@@ -20,7 +20,7 @@ $id = $_POST['id'];
 	}
 	else{
 		if(!empty($id)){
-			$sql1 = "UPDATE `wepay`.`user_info` SET `type` = 'user' WHERE `user_info`.`id` = '$id'";
+			$sql1 = "UPDATE `wepay`.`user_info` SET `type` = 'buyer' WHERE `user_info`.`id` = '$id'";
 			$query1 = mysql_query($sql1, $conn);
 			if($query1 == FALSE){
 				echo "<script>\r\n";   

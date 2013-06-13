@@ -27,6 +27,7 @@
 <header>
     <nav>   
 	  <div id="logo"><a href="#"><img src="images/logo.png" alt="Logo here" /></a></div>  
+	  <div class = "logout"><a href="index.php"><i>sign out</i></a></div>
     </nav>
 </header>
 	<div style="position:relative;left:400px;"><img src="images/admin.png" /></div>
